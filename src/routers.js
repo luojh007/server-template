@@ -13,7 +13,7 @@ router.get('/item/page', async (ctx, next) => {
 });
 router.get('/k-chart/index', async (ctx, next) => {
   return new Promise((resolve, reject) => {
-    let { period = 'D', pidx = '1', psize = '100', symbol = 'GBPJPY' } = ctx.params;
+    let { period = 'D', pidx = '1', psize = '100', symbol = 'GBPJPY' } = ctx.request.query
     let params = {
       period,
       pidx,
@@ -40,3 +40,5 @@ router.get('/', async (ctx, next) => {
   ctx.response.body = '<h1>Index</h1>';
 });
 module.exports = router;
+
+
