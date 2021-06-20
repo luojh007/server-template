@@ -1,5 +1,5 @@
 // 深拷贝
-// 递归
+// 迭代，深度优先搜索
 /**
  * 1. 实现深拷贝
  * 2. 使用栈的数据结构替代递归，防止内存溢出
@@ -18,9 +18,8 @@ function deepClone (arr, hash = new WeakMap()) {
   }]
 
   while (loopList.length) {
-    var node = loopList.pop()
+    var node = loopList.shift()
     var { data, key, parent } = node
-
     // 遍历第一个节点
     var current = parent;
 
@@ -47,7 +46,6 @@ function deepClone (arr, hash = new WeakMap()) {
         current[i] = data[i]
       }
     })
-
   }
   return result
 }
